@@ -92,6 +92,8 @@ class CvdumpSymbolsParser:
         "S_LABEL32",
         "S_LDATA32",
         "S_UDT",
+        "S_CONSTANT",
+        "S_REGREL32",
     ]
 
     """Parser for cvdump output, SYMBOLS section."""
