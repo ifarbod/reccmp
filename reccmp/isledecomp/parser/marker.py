@@ -43,7 +43,7 @@ class DecompMarker:
         self, marker_type: str, module: str, offset: int, extra: str | None = None
     ) -> None:
         try:
-            self._type = MarkerType[marker_type.upper()]
+            self._type = MarkerType["FUNCTION" if marker_type.upper() == "FUNC" else marker_type.upper()]
         except KeyError:
             self._type = MarkerType.UNKNOWN
 
