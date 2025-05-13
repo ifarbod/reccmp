@@ -115,7 +115,10 @@ def print_match_oneline(match, show_both_addrs: bool = False, is_plain: bool = F
     if match.is_stub:
         print(f"  {match.name} ({addrs}) is a stub.")
     else:
-        print(f"  {match.name} ({addrs}) is {percenttext} similar to the original")
+        if match.effective_ratio == 1.0:
+            print(f"  {match.name} ({addrs}) is a {percenttext} match")
+        else:
+            print(f"  {match.name} ({addrs}) is {percenttext} similar to the original")
 
 
 def parse_args() -> argparse.Namespace:
