@@ -334,10 +334,12 @@ class CvdumpTypesParser:
         if array_type is None:
             raise CvdumpIntegrityError("No array element type")
 
+        if "size" not in type_obj:
+            raise CvdumpIntegrityError(f"LF_ARRAY is missing 'size' field: {type_obj}")
+
         array_element_size = self.get(array_type).size
-        assert (
-            array_element_size is not None
-        ), "Encountered an array whose type has no size"
+        if array_element_size is None:
+            raise CvdumpIntegrityError(f"Array element type {array_type} has no size")
 
         n_elements = type_obj["size"] // array_element_size
 
