@@ -18,7 +18,7 @@ class DecompCodebase:
         parser = DecompParser()
         for filename in filenames:
             parser.reset()
-            with open(filename, "r", encoding="utf-8") as f:
+            with open(filename, "r", encoding="utf-8", errors="replace") as f:
                 parser.read(f.read())
 
             for sym in parser.iter_symbols(module):
