@@ -134,7 +134,7 @@ class PathResolver:
 
 
 def is_file_cpp(filename: Path | str) -> bool:
-    return Path(filename).suffix.lower() in (".h", ".cpp")
+    return Path(filename).suffix.lower() in (".h", ".hpp", ".cpp")
 
 
 def walk_source_dir(source: Path, recursive: bool = True) -> Iterator[str]:
