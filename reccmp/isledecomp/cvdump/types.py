@@ -299,7 +299,10 @@ class CvdumpTypesParser:
         if type_obj.get("type") == "LF_FIELDLIST":
             field_obj = type_obj
         else:
-            field_list_type = type_obj["field_list_type"]
+            field_list_type = type_obj.get("field_list_type")
+            if field_list_type is None:
+                # field_list_type is missing; return empty list
+                return []
             field_obj = self.keys[field_list_type]
 
         members: list[FieldListItem] = []
